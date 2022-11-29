@@ -5,6 +5,7 @@ namespace Versions.Models;
 [Serializable]
 public class Weapon2
 {
+	public const string FileNameBinary = @"\Weapon2.dat";
 	public string Name { get; set; }
 	public int Damage { get; set; }
 	public int Ammo { get; set; }
@@ -14,15 +15,6 @@ public class Weapon2
 		Name = name;
 		Damage = damage;
 		Ammo = ammo;
-	}
-	public static void SaveWeapon2Binary(string pathToSave, Weapon2 weapon2)
-	{
-		string path = pathToSave;
-		using (FileStream fs = new FileStream(path, FileMode.Create))
-		{
-			BinaryFormatter formatter = new BinaryFormatter();
-			formatter.Serialize(fs, weapon2);
-		}
 	}
 	public override string ToString()
 	{

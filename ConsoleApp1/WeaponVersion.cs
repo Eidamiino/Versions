@@ -8,6 +8,7 @@ namespace Versions;
 [Serializable]
 public class WeaponVersion
 {
+	public const string FileNameBinary = @"\Weapon2.dat";
 	public string VersionName { get; set; }
 	public object Weapon { get; set; }
 	public WeaponVersion(string pathWeaponBinary)
@@ -20,8 +21,7 @@ public class WeaponVersion
 
 	public static void SaveVersionBinary(string pathToSave, WeaponVersion weaponVersion)
 	{
-		string path = pathToSave;
-		using (FileStream fs = new FileStream(path, FileMode.Create))
+		using (FileStream fs = new FileStream($"{pathToSave}{FileNameBinary}", FileMode.Create))
 		{
 			BinaryFormatter formatter = new BinaryFormatter();
 			formatter.Serialize(fs, weaponVersion);
@@ -55,6 +55,6 @@ public class WeaponVersion
 	public override string ToString()
 	{
 		return $"WeaponVersion: {VersionName}\n" +
-		       $"Weapon: {Weapon}";
+		       $"Weapon:\n {Weapon}";
 	}
 }
