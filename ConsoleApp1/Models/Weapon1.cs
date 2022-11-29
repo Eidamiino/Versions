@@ -1,5 +1,6 @@
 ﻿namespace Versions.Models;
 
+[Serializable]
 public class Weapon1
 {
 	public string Name { get; set; }
@@ -9,5 +10,10 @@ public class Weapon1
 	{
 		Name = name;
 		Damage = damage;
+	}
+
+	public override string ToString()
+	{
+		return $"Name:{Name}, Damage:{Damage}";
 	}
 }
